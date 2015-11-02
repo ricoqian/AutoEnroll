@@ -10,13 +10,13 @@ courses = ["apm236", "MUS206H1"] # Course code (e.g. ["apm236", "MUS206H1"])
 term = S # F: 1, S: -1
 utorid = "<UTORID>" # Your Portal UTORid
 password = "<PASSWORD>" # Your Portal Password
-program_year = "ASPRGHBSC 2015-2016 Fall/Winter" ## Program year (e.g. "ASPRGHBSC 2015-2016 Fall/Winter")
+program_year = "ASPRGHBSC 2015-2016 Fall/Winter" # Program year (e.g. "ASPRGHBSC 2015-2016 Fall/Winter")
 while True:
     if not courses:
         break
     for course in courses:
         try:
-            wait = randint(10,20)
+            wait = randint(30,300)
             wd.implicitly_wait(wait)
             wd.get("https://acorn.utoronto.ca/sws/welcome.do?welcome.dispatch#/")
             if wd.find_elements_by_id("inputID"):
@@ -38,11 +38,10 @@ while True:
             if wd.find_elements_by_link_text("Enrol"):
                 wd.find_element_by_link_text("Enrol").click()
                 courses.remove(course)
+                print("%s was successfully enrolled. Congrats!\n" % course)
                 break
         except Exception:
             continue
-
-    print("%s was successfully enrolled. Congrats!\n" % course)
 wd.quit()
 
 
