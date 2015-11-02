@@ -1,5 +1,5 @@
 # AutoEnroll
-Program for automatically enrolling UofT courses
+Program for automatically enrolling UofT courses after waiting list closed
 
 ## How to use?
 Download Selenium before using AutoEnroll:
