@@ -11,8 +11,10 @@ term = S # F: 1, S: -1
 utorid = "<UTORID>" # Your Portal UTORid
 password = "<PASSWORD>" # Your Portal Password
 program_year = "ASPRGHBSC 2015-2016 Fall/Winter" ## Program year (e.g. "ASPRGHBSC 2015-2016 Fall/Winter")
-for course in courses:
-    while True:
+while True:
+    if not courses:
+        break
+    for course in courses:
         try:
             wait = randint(10,20)
             wd.implicitly_wait(wait)
@@ -35,6 +37,7 @@ for course in courses:
             wd.find_elements_by_xpath("//ul[@id='course_search_results_list']//li//a")[term].click()
             if wd.find_elements_by_link_text("Enrol"):
                 wd.find_element_by_link_text("Enrol").click()
+                courses.remove(course)
                 break
         except Exception:
             continue
